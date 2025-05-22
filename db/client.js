@@ -1,3 +1,12 @@
 import pg from "pg";
-const db = new pg.Client(process.env.DATABASE_URL);
+import dotenv from "dotenv"
+dotenv.config()
+
+const connectionString =
+  process.env.DATABASE_URL || "postgres://localhost/fullstack_employees";
+
+
+const db = new pg.Client({ connectionString });
+
+
 export default db;
